@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,9 +9,34 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Foro\User;
+
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/create', function () {
+    /*return 'pagina home';*/
+    $user = User::create([
+        'name'=> 'Geovana F',
+        'email' =>'g@gmail.com',
+        'password' => bcrypt('123456'),
+        'gender' => 'f', 
+        'biography' => 'Psicologa'
+    ]);
+
+    return 'Guardado con Exito';
+});
+Route::get('/update-user', function () {
+    $user = User::find(1);
+
+    $user->gender ="m";
+    $user->biography = "PROFE FISICO";
+
+    $user->save();
+
+    return 'Usuario Actualizado';
 });
 
 Auth::routes();
