@@ -10,6 +10,7 @@
 |
 */
 use Foro\User;
+use Faker\Factory as Faker;
 
 
 Route::get('/', function () {
@@ -18,15 +19,17 @@ Route::get('/', function () {
 
 Route::get('/create', function () {
     /*return 'pagina home';*/
+    $faker = Faker::create();
+
     $user = User::create([
-        'name'=> 'Geovana F',
-        'email' =>'g@gmail.com',
+        'name'=> $faker->name,
+        'email' => $faker->email,
         'password' => bcrypt('123456'),
-        'gender' => 'f', 
-        'biography' => 'Psicologa'
+        'gender' => $faker->randomElement(['f','m']), 
+        'biography' => $faker->text(200)
     ]);
 
-    return 'Guardado con Exito';
+    return $user;
 });
 Route::get('/update-user', function () {
     $user = User::find(1);
@@ -38,7 +41,31 @@ Route::get('/update-user', function () {
 
     return 'Usuario Actualizado';
 });
+Route::get('/update/{id}', function ($id) {
+    $faker = Faker::create();
+    $user = User::find($id);
 
+    $user->name = $faker->name;
+    $user->gender = $faker->randomElement(['f','m']);
+    $user->biography = $faker->text(10);
+
+    $user->save();
+
+    return $user;
+});
+
+Route::get('/read/{id}',function($id){
+    $user = User::find($id);
+    return $user;
+});
+Route::get('delete/{id}',function($id){
+    $user = User::find($id);
+    $user->delete();
+    
+    return 'usuario eliminado';
+});
+
+    
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
