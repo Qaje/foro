@@ -18,18 +18,23 @@
                         <li>
                             <a href="{{ route('home') }}">Home</a>
                         </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Consultas Eloquent
+                            <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a href="{{ route('all') }}">
+                                Todoo los Usuarios (ALL)
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
                     </ul>
                 </div>
             </nav>
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>Curso Eloquent ORM</h1>
-                    <p>Texto</p>
-                </div>
-            </div>
-            <div class="container">
-                @yield('content')
-            </div>
+            @yield('content')
                 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
