@@ -1,7 +1,6 @@
-<?php
+ <?php
 
 use Faker\Generator as Faker;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -13,13 +12,15 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Foro\User::class, function (Faker $faker) {
-    static $password;
+$factory->define(Foro\User::class, function (Faker\Generator $faker) {
+    /*static $password;*/
 
     return [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'email' => $faker->email,
+        'password' => bcrypt(str_random(10)),
+        'gender' => $faker->randomElement(['f','m']),
+        'biography' => $faker->text(rand(25,255)),
+        'remember_token' => $faker->randomElement([null,str_random(10)])
     ];
 });
