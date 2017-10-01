@@ -4,6 +4,8 @@ namespace Foro\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Foro\User;
+use Illuminate\Database\Query\Builder as lists;
+
 class QueryController extends Controller
 {
     //
@@ -30,5 +32,9 @@ class QueryController extends Controller
         $user ->delete();
         return view('pages.delete');
     }
-
+    public function eloquentLists(){
+        $users = User::orderBy('name','ASC')
+        ->lists('name','id');
+        return view('query.lists',compact('users'));
+    }
 }
