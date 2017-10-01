@@ -8,17 +8,9 @@
 		Todos los usuarios (All)
 	</h1>
 	<table class="table table-hover table-striped">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nombre</th>
-				<th>Email</th>
-				<th>Genero</th>
-				<th>Biografia</th>
-			</tr>
-		</thead>
+		@include('partials.head-users')
 		<tbody>
-			@include('query.partials.list-users')
+			@include('partials.list-users')
 		</tbody>
 	</table>
 </div>
