@@ -19,9 +19,13 @@ Route::get('/all',[
     'as' => 'all',
     'uses' => 'QueryController@eloquentAll'
     ]);
-Route::get('/get',[
+Route::get('/get/{gender}',[
     'as' => 'get',
     'uses' => 'QueryController@eloquentGet'
+]);
+Route::get('/get-custom',[
+    'as' => 'get-custom',
+    'uses' => 'QueryController@eloquentGetCustom'
 ]);
 
     Route::get('/create', function () {

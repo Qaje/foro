@@ -24,11 +24,26 @@
                             <span class="caret"></span>
                           </a>
                           <ul class="dropdown-menu">
-                            <li>
+                              <li>
                               <a href="{{ route('all') }}">
                                 Todoo los Usuarios (ALL)
                               </a>
-                            </li>
+                              </li>
+                              <li>
+                                  <a href="{{ route('get','f') }}">
+                                      Listar de Usuario (Femenina) GET
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="{{ route('get','m') }}">
+                                      Listar de Usuario (Masculino) GET
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="{{ route('get-custom') }}">
+                                      Listar de Usuario (GET con Array)
+                                  </a>
+                              </li>
                           </ul>
                         </li>
                     </ul>

@@ -9,11 +9,20 @@ class QueryController extends Controller
     //
     public function eloquentAll(){
       $users = User::all();
-      return view('query.all',compact('users'));
+      $title = "Todos los Usuarios (ALL)";
+      return view('query.methods',compact('title','users'));
     }
-    public function eloquentGet(){
-      $users = User::where('gender','f')
-      ->get();
-      return view('query.all',compact('users'));
+
+    public function eloquentGet($gender){
+      $users = User::where('gender',$gender)
+               ->get();
+      $title = "Listar de usuarios (GET)";
+      return view('query.methods',compact('title','users'));
+    }
+    public function eloquentGetCustom(){
+        $users = User::where('gender','f')
+            ->get(['id','name','biography']);
+        $title = "Listar de usuarios (GET custom -con Array)";
+      return view('query.methods',compact('title','users'));
     }
 }
